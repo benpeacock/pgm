@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514173100) do
+ActiveRecord::Schema.define(version: 20140514174428) do
 
   create_table "answers", force: true do |t|
     t.text     "answer"
@@ -36,5 +36,30 @@ ActiveRecord::Schema.define(version: 20140514173100) do
   end
 
   add_index "programs", ["country_id"], name: "index_programs_on_country_id"
+
+  create_table "questions", force: true do |t|
+    t.text     "question"
+    t.integer  "tab_id"
+    t.integer  "type_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["tab_id"], name: "index_questions_on_tab_id"
+  add_index "questions", ["type_id"], name: "index_questions_on_type_id"
+
+  create_table "tabs", force: true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

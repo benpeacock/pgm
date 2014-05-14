@@ -1,4 +1,6 @@
 Pgm::Application.routes.draw do
+  resources :questions
+
   resources :types
 
   resources :tabs
