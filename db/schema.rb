@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514171700) do
+ActiveRecord::Schema.define(version: 20140514172619) do
 
   create_table "answers", force: true do |t|
-    t.text     "answer", limit: 10000
+    t.text     "answer"
     t.integer  "question_id"
     t.integer  "program_id"
     t.integer  "year_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,6 @@
 Pgm::Application.routes.draw do
+  resources :countries
+
   resources :answers
 
   # The priority is based upon order of creation: first created -> highest priority.
