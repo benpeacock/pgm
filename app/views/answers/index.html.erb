@@ -1,0 +1,37 @@
+<h1>Listing answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Answer</th>
+      <th>Question</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Program</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.answer %></td>
+        <td><%= answer.question_id %></td>
+        <td><%= answer.created_at %></td>
+        <td><%= answer.updated_at %></td>
+        <td><%= answer.program_id %></td>
+        <td><%= answer.year_id %></td>
+        <td><%= link_to 'Show', answer %></td>
+        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer', new_answer_path %>
