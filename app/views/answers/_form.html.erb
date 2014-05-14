@@ -17,23 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :question_id %><br>
-    <%= f.number_field :question_id %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br>
-    <%= f.datetime_select :created_at %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_at %><br>
-    <%= f.datetime_select :updated_at %>
+    <%= f.text_field :question_id %>
   </div>
   <div class="field">
     <%= f.label :program_id %><br>
-    <%= f.number_field :program_id %>
+    <%= f.text_field :program_id %>
   </div>
   <div class="field">
     <%= f.label :year_id %><br>
-    <%= f.number_field :year_id %>
+    <%= f.text_field :year_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

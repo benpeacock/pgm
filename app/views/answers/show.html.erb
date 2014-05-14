@@ -7,27 +7,17 @@
 
 <p>
   <strong>Question:</strong>
-  <%= @answer.question_id %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @answer.created_at %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @answer.updated_at %>
+  <%= @answer.question %>
 </p>
 
 <p>
   <strong>Program:</strong>
-  <%= @answer.program_id %>
+  <%= @answer.program %>
 </p>
 
 <p>
   <strong>Year:</strong>
-  <%= @answer.year_id %>
+  <%= @answer.year %>
 </p>
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
