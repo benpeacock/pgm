@@ -1,4 +1,6 @@
 Pgm::Application.routes.draw do
+  resources :years
+
   resources :questions
 
   resources :types
