@@ -50,3 +50,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Devise for authentication
+gem 'devise'
+
+# Figaro to manage sensitive data
+gem 'figaro'

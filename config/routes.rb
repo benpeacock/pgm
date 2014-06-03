@@ -1,4 +1,5 @@
 Pgm::Application.routes.draw do
+  devise_for :users
   resources :answers
 
   resources :years
