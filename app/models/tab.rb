@@ -1,5 +1,5 @@
 class Tab < ActiveRecord::Base
-	#has_many :questions
+	has_many :questions
 
 	rails_admin do
 		list do
