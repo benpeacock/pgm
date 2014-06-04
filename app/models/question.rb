@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
 
   rails_admin do
 		edit do
-			field :question, :ck_editor
+			field :question
 			field :type
 			field :tab
 			field :position
