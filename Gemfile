@@ -56,3 +56,6 @@ gem 'devise'
 
 # Figaro to manage sensitive data
 gem 'figaro'
+
+# Rails_admin for backend admin
+gem 'rails_admin'
