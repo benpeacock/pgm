@@ -59,3 +59,6 @@ gem 'figaro'
 
 # Rails_admin for backend admin
 gem 'rails_admin'
+
+# ckeditor for WYSIWYG
+gem 'ckeditor'
