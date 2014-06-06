@@ -1,0 +1,23 @@
+<ul class="nav navbar-nav">
+  <% @countries.each do |country| %>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= country.name %> <b class="caret"></b></a>
+      <% programs = Program.where(country_id: country.id) %>
+      <% if programs %>
+        <ul class="dropdown-menu">
+          <% programs.each do |program| %>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#"><%= program.name %></a>
+              <%# render "years/index", locals: { program: program } %>
+              <ul class="dropdown-menu">
+              <% @years.each do |year| %>
+                <li><%= link_to year.year, program_year_path(program.id, year) %></li>
+              <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

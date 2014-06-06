@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
 			field :confirmed_at
 		end
 	end
+
+	def role?(base_role)
+		role == base_role.to_s
+	end
+
 end

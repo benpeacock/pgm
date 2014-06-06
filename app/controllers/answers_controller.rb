@@ -5,26 +5,31 @@ class AnswersController < ApplicationController
   # GET /answers.json
   def index
     @answers = Answer.all
+    authorize @answers
   end
 
   # GET /answers/1
   # GET /answers/1.json
   def show
+    authorize @answers
   end
 
   # GET /answers/new
   def new
     @answer = Answer.new
+    authorize @answers
   end
 
   # GET /answers/1/edit
   def edit
+    authorize @answers
   end
 
   # POST /answers
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
+    authorize @answers
 
     respond_to do |format|
       if @answer.save
@@ -40,6 +45,7 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
+    authorize @answers
     respond_to do |format|
       if @answer.update(answer_params)
         format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
@@ -55,6 +61,7 @@ class AnswersController < ApplicationController
   # DELETE /answers/1.json
   def destroy
     @answer.destroy
+    authorize @answers
     respond_to do |format|
       format.html { redirect_to answers_url }
       format.json { head :no_content }

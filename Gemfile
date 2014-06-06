@@ -60,7 +60,11 @@ gem 'figaro'
 # Rails_admin for backend admin
 gem 'rails_admin'
 
-gem 'bootstrap-sass', '~> 3.1.1'
-
 # Faker to seed database
 gem 'faker'
+
+# Bootstrap for styling
+gem 'bootstrap-sass', '~> 3.1.1'
+
+# Pundit for user permissions
+gem 'pundit'
