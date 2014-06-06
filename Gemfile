@@ -61,3 +61,6 @@ gem 'figaro'
 gem 'rails_admin'
 
 gem 'bootstrap-sass', '~> 3.1.1'
+
+# Faker to seed database
+gem 'faker'
