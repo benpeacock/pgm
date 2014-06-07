@@ -68,6 +68,18 @@ class AnswersController < ApplicationController
     end
   end
 
+  def answer_for_params
+    @answer_id = params[:id]
+    answer = Answer.find_by program_id: params[:program_id], question_id: params[:question_id], year_id: params[:year_id]
+    @answer_text = answer.blank? ? "This value does not exist." : answer.answer
+  end
+
+  def new_for_params
+    @question_id = params[:question_id]
+    answer = Answer.find_by program_id: params[:program_id], question_id: params[:question_id], year_id: params[:year_id]
+    @answer_whole = answer.blank? ? "This value does not exist." : answer.answer
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer

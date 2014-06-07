@@ -16,3 +16,20 @@
 //= require_tree .
 //= require bootstrap
 
+// These scripts handle tabs in year#show
+function tabs(container){
+	$(container).find(".tabs").on("click", "li > a", function(e){
+		e.preventDefault();
+		$(".tab").removeClass("active");
+		$(".tabs").find("a").removeClass("active");
+		var targetTab = $(this).attr("href");
+		$(targetTab).addClass("active");
+		$(this).addClass("active")
+	});
+}
+ 
+$(function() {
+	tabs("body");
+});
+
+

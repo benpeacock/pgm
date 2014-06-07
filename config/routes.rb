@@ -4,7 +4,11 @@ Pgm::Application.routes.draw do
   get "welcome/index"
 
   devise_for :users
-  resources :answers
+  
+  resources :answers do
+    get 'answer_for_params', on: :member
+    get 'new_for_params', on: :member
+  end
 
   resources :questions
 
