@@ -1,1 +1,166 @@
 @import "bootstrap";
+
+/* Bootstrap 3 navbar with multi level fix */
+.dropdown-submenu{
+    position:relative;
+}
+
+.dropdown-submenu > .dropdown-menu
+{
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    ;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu{
+    display:block;
+}
+
+.dropdown-submenu > a:after{
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+
+.dropdown-submenu:hover > a:after{
+    border-left-color:#ffffff;
+}
+
+.dropdown-submenu .pull-left{
+    float:none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu{
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+/* End multi-level fix for Bootstrap 3 'submenu' */
+
+
+/* ############# */
+/* CUSTOM STYLES */
+/* ############# */
+
+
+/* Signin form styles */
+
+.form-signin {
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 15px;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    -moz-box-sizing: border-box;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    position: relative;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: -1px;
+}
+.form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 10px;
+}
+
+
+/* Styles for nav menu */
+.nav {
+    margin-top: 5px;
+}
+
+
+/* Begin styles for tabs to display program information */
+.tabs {
+        overflow: hidden;
+    &>li {
+        display: inline-block;
+        vertical-align: top;
+            &>a {
+                display: inline-block;
+                text-decoration: none;
+                color: #272727;
+                padding: 10px 15px;
+                margin-right: 5px;
+                border-radius: 5px 5px 0 0;
+                background: #fff;
+                position: relative;
+                z-index: 10;
+                &.active {
+                    background: #f1f1f1;
+            }
+        }
+    }
+}
+.tab {
+    display: none;
+    margin-top: -1px;
+    position: relative;
+    z-index: 5;
+    &.active {
+        display: block;
+    }
+}
+
+
+/* Styling answer-input div */
+
+.answer-partial {
+    margin: 0 0 20px 0;
+}
+
+/* Styling the buttons that appear beneath the answer input field on Year show */
+
+.actions {
+    position: relative;
+}
+
+.lineup {
+    float: left;
+}
+
+.year-menu {
+    top: 30px;
+    left: 125px;
+}
+
+.program-menu {
+    top: 30px;
+    left: 255px;
+}
+
+
+/* Styling the text area field for answer input */
+.answer-area {
+    height: 5em;
+    width: 50em;
+}

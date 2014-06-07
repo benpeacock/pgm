@@ -6,15 +6,15 @@ Pgm::Application.routes.draw do
   devise_for :users
   resources :answers
 
-  resources :years
-
   resources :questions
 
   resources :types
 
   resources :tabs
 
-  resources :programs
+  resources :programs do
+    resources :years
+  end
 
   resources :countries
 
