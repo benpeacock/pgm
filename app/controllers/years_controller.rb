@@ -1,5 +1,9 @@
 class YearsController < ApplicationController
   before_action :set_year, only: [:show, :edit, :update, :destroy]
+  before_action :set_years, only: [:index, :show, :edit]
+  before_action :set_countries, only: [:show, :edit]
+  before_action :set_program, only: [:show, :edit, :update]
+  before_action :set_questions, only: [:show, :edit]
 
   # GET /years
   # GET /years.json
@@ -10,6 +14,8 @@ class YearsController < ApplicationController
   # GET /years/1
   # GET /years/1.json
   def show
+    @tabs = Tab.all
+    @answer = Answer.new
   end
 
   # GET /years/new
@@ -65,10 +71,27 @@ class YearsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_year
       @year = Year.find(params[:id])
+      authorize @year
+    end
+
+    def set_years
+      @years = Year.all
+    end
+
+    def set_countries
+      @countries = Country.all
+    end
+
+    def set_program
+      @program = Program.find(params[:program_id])
+    end
+
+    def set_questions
+      @questions = Question.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def year_params
-      params.require(:year).permit(:year)
+      params.require(:year).permit(:id, :year)
     end
 end
