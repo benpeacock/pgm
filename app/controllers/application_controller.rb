@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+
+  # Require that users log in before navigating to any screen except the sign in screen.
+  before_action :authenticate_user!
+
   # include Pundit to handle user permissions
   include Pundit
 
