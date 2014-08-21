@@ -26,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && user.role?(:admin)
+    user.present? && user.role?(:user)
   end
 
   def edit?
@@ -41,4 +41,3 @@ class ApplicationPolicy
     record.class
   end
 end
-
