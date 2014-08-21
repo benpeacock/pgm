@@ -1,0 +1,3 @@
+$("#static_answer_<%= @answer.question.id %> p").html("<%= @answer.answer %>");
+$(".new_<%= @answer.question.id %>").html('');
+$("#field_<%= @answer.question.id %>").hide();
