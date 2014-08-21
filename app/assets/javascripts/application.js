@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require_tree .
 //= require bootstrap
 
@@ -27,9 +27,18 @@ function tabs(container){
 		$(this).addClass("active")
 	});
 }
- 
+
 $(function() {
 	tabs("body");
 });
 
-
+// This script handles opening of individual answers for editing on Year#show
+$(document).ready(function(){
+	$(".toggleLink").click(function(event){
+		event.preventDefault();
+		var id_val = '#field_' + event.target.id;
+	$(id_val).show();
+	$("div.toggleField").not(id_val).hide();
+	return false;
+	});
+});
