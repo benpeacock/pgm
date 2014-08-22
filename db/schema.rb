@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606165152) do
+ActiveRecord::Schema.define(version: 20140822170846) do
 
   create_table "answers", force: true do |t|
     t.text     "answer"
@@ -25,22 +25,6 @@ ActiveRecord::Schema.define(version: 20140606165152) do
   add_index "answers", ["program_id"], name: "index_answers_on_program_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["year_id"], name: "index_answers_on_year_id"
-
-  create_table "ckeditor_assets", force: true do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.integer  "assetable_id"
-    t.string   "assetable_type",    limit: 30
-    t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
-  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
   create_table "countries", force: true do |t|
     t.string   "name"
@@ -101,6 +85,9 @@ ActiveRecord::Schema.define(version: 20140606165152) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.integer  "failed_attempts",        default: 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
