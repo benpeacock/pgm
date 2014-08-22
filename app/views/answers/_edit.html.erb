@@ -6,9 +6,9 @@
           <%= if question.type.id == 1
                 f.check_box :answer, {id: dom_id(answer)}, "Yes", "No"
               elsif question.type.id == 2
-                f.text_field :answer, id: dom_id(answer)
-              else 
-                f.text_area :answer, id: dom_id(answer), class: 'answer-area'
+                f.text_field :answer, id: dom_id(answer), class: 'form-control answer-field'
+              else
+                f.text_area :answer, id: dom_id(answer), class: 'form-control answer-area'
               end %>
       </div>
     </div>
