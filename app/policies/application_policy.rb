@@ -10,7 +10,7 @@ class ApplicationPolicy
   # Require admin user by default for most actions, then allow users by model-specific policies
 
   def index?
-    user.present? && user.role?(:user)
+    user.present? && (user.role?(:user) || user.role?(:admin))
   end
 
   def show?
@@ -18,7 +18,7 @@ class ApplicationPolicy
   end
 
   def create?
-    user.present? && user.role?(:admin)
+    user.present? && (user.role?(:user) || user.role?(:admin))
   end
 
   def new?
@@ -26,7 +26,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && user.role?(:user)
+    user.present? && (user.role?(:user) || user.role?(:admin))
   end
 
   def edit?

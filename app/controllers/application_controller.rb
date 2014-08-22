@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   # Check that user is authorized to perform an action before it's committed.
-  after_action :verify_authorized
+  # after_action :verify_authorized
 
   rescue_from Pundit::NotAuthorizedError do |exception|
   	redirect_to user_session_path, alert: exception.message
