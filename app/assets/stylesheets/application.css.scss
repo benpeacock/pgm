@@ -169,3 +169,12 @@
   height: 2em;
   width: 25em;
 }
+
+/* Styling error message that appears when an insufficiently strong password is selected */
+
+#error_explanation {
+  h2 {
+    color: red;
+    font-size: 16px;
+  }
+}

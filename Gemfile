@@ -54,6 +54,9 @@ end
 # Devise for authentication
 gem 'devise'
 
+# Devise_zxcvbn to enforce password strength
+gem 'devise_zxcvbn'
+
 # Figaro to manage sensitive data
 gem 'figaro'
 
