@@ -3,8 +3,13 @@ Pgm::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "welcome/index"
 
-  devise_for :users
-  
+  # Routing for devise/users modified from stock to remove signup path
+  devise_for :users, :skip => [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
   resources :answers do
     get 'answer_for_params', on: :member
     get 'new_for_params', on: :member
