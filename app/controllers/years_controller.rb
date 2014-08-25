@@ -14,7 +14,7 @@ class YearsController < ApplicationController
   # GET /years/1
   # GET /years/1.json
   def show
-    @tabs = Tab.order(:name).all
+    @tabs = Tab.order(:position).all
     @answer = Answer.new
   end
 
