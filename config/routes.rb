@@ -15,8 +15,6 @@ Pgm::Application.routes.draw do
     get 'new_for_params', on: :member
   end
 
-  resources :questions
-
   resources :types
 
   resources :tabs
@@ -24,8 +22,6 @@ Pgm::Application.routes.draw do
   resources :programs do
     resources :years
   end
-
-  resources :countries
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
