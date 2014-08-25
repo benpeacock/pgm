@@ -15,10 +15,6 @@ Pgm::Application.routes.draw do
     get 'new_for_params', on: :member
   end
 
-  resources :types
-
-  resources :tabs
-
   resources :programs do
     resources :years
   end
