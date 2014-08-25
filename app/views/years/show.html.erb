@@ -3,7 +3,7 @@
 
 	<ul class="tabs">
 		<% @tabs.each do |tab| %>
-			<li><a href="#<%= tab.name %>"><%= tab.name %></a></li>
+			<li><a href="#<%= tab.name %>"><%= tab.name.humanize %></a></li>
 		<% end %>
 	</ul>
 
