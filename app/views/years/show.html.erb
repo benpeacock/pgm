@@ -13,7 +13,7 @@
 			<% questions.each do |question| %>
 				<div class="row answer-partial">
 					<div>
-						<strong>Question ID: <%= question.id %>, <%= question.question.html_safe %></strong>
+						<strong><%= question.question.html_safe %></strong>
 					</div>
 					<% answer = answer_for_question(question, @program, @year) %>
 					<% if answer.blank? %>
