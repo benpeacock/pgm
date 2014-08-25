@@ -57,16 +57,6 @@ class YearsController < ApplicationController
     end
   end
 
-  # DELETE /years/1
-  # DELETE /years/1.json
-  def destroy
-    @year.destroy
-    respond_to do |format|
-      format.html { redirect_to years_url }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_year
