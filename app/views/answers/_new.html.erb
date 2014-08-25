@@ -2,14 +2,14 @@
 	<%= f.hidden_field :question_id, :value => question.id %>
 	<%= f.hidden_field :program_id, :value => program.id %>
 	<%= f.hidden_field :year_id, :value => year.id %>
-  
+
   <div class="field">
      <div>
       <%= if question.type.id == 1
             f.check_box :answer, {id: "new_answer_#{question.id}"}, "Yes", "No"
           elsif question.type.id == 2
             f.text_field :answer, id: "new_answer_#{question.id}"
-          else 
+          else
             f.text_area :answer, id: "new_answer_#{question.id}", class: 'answer-area'
           end %>
      </div>
@@ -24,7 +24,7 @@
 	      Cancel
 	    <% end %>
 	  </div>
-	  <% unless question.type.id == 1 %>
+	  <% unless question.type.name == 'checkbox' %>
 			<div>
 		    <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
 		    	Copy Previous <span class="caret"></span>
