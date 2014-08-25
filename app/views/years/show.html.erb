@@ -9,7 +9,7 @@
 
 	<% @tabs.each do |tab| %>
 		<div class="tab" id="<%= tab.name %>">
-			<% questions = Question.where(tab_id: tab.id) %>
+			<% questions = Question.where(tab_id: tab.id).order(:position) %>
 			<% questions.each do |question| %>
 				<div class="row answer-partial">
 					<div>
