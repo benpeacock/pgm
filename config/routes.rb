@@ -1,6 +1,15 @@
 Pgm::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # Looks at user's authentication and role
+  rails_admin_constraint = lambda do |request|
+    request.env['warden'].authenticate? && request.env['warden'].user.role?(:admin)
+  end
+
+  # Applies constraint so that only logged in users with an admin role can access rails_admin
+  constraints rails_admin_constraint do
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  end
+
   get "welcome/index"
 
   # Routing for devise/users modified from stock to remove signup path
