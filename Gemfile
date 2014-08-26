@@ -72,5 +72,5 @@ gem 'bootstrap-sass', '~> 3.1.1'
 # Pundit for user permissions
 gem 'pundit'
 
-#TinyMCE as WYSIWYG editor in rails_admin
-gem 'tinymce-rails'
+# Wysihtml5 gem for WYSIWYG on rails_admin
+gem 'bootstrap-wysihtml5-rails', '0.3.1.24'
