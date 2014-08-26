@@ -36,6 +36,7 @@ RailsAdmin.config do |config|
       field :type
       field :tab
       field :position
+      field :allow_copy_prev
     end
   end
 

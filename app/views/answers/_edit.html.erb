@@ -23,19 +23,21 @@
           Cancel
         <% end %>
       </div>
-      <% unless question.type.id == 1 %>
-        <div>
-          <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
-          Copy Previous <span class="caret"></span>
-        	</button>
-          <ul class="dropdown-menu year-menu" role="menu" id="year-menu-<%=answer.id%>">
-          	<% @years.each do |year| %>
-          		<li>
-          			<%= link_to year.year, answer_for_params_answer_path(answer, year_id: year, program_id: program, question_id: question), class: "copyPrev", remote:true %>
-          		</li>
-          	<% end %>
-        	</ul>
-        </div>
+      <% unless question.type.name = 'checkbox' %>
+        <% unless question.allow_copy_prev == false %>
+          <div>
+            <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
+            Copy Previous <span class="caret"></span>
+          	</button>
+            <ul class="dropdown-menu year-menu" role="menu" id="year-menu-<%=answer.id%>">
+            	<% @years.each do |year| %>
+            		<li>
+            			<%= link_to year.year, answer_for_params_answer_path(answer, year_id: year, program_id: program, question_id: question), class: "copyPrev", remote:true %>
+            		</li>
+            	<% end %>
+          	</ul>
+          </div>
+        <% end %>
         <div>
           <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
             Copy Other <span class="caret"></span>

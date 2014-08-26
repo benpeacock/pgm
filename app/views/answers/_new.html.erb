@@ -5,12 +5,12 @@
 
   <div class="field">
      <div>
-      <%= if question.type.id == 1
+      <%= if question.type.name == 'checkbox'
             f.check_box :answer, {id: "new_answer_#{question.id}"}, "Yes", "No"
-          elsif question.type.id == 2
-            f.text_field :answer, id: "new_answer_#{question.id}"
+          elsif question.type.id == 'field'
+            f.text_field :answer, id: "new_answer_#{question.id}", class: 'form-control answer-field'
           else
-            f.text_area :answer, id: "new_answer_#{question.id}", class: 'answer-area'
+            f.text_area :answer, id: "new_answer_#{question.id}", class: 'form-control answer-area'
           end %>
      </div>
   </div>
