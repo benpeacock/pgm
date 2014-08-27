@@ -28,25 +28,4 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-
-  ### Displays WYSIWYG editor on rails_admin fields using Wysihtml5 gem ###
-  config.model Question do
-    edit do
-      field :question, :wysihtml5
-      field :type
-      field :tab
-      field :position
-      field :allow_copy_prev
-    end
-  end
-
-  config.model Answer do
-    edit do
-      field :answer, :wysihtml5
-      field :question
-      field :program
-      field :year
-    end
-  end
-
 end

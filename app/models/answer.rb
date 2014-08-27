@@ -4,11 +4,12 @@ class Answer < ActiveRecord::Base
   belongs_to :year
 
   rails_admin do
-  	list do
-  		field :program
-  		field :year
-  		field :answer
-  	end
+    edit do
+      field :answer, :wysihtml5
+      field :question
+      field :program
+      field :year
+    end
   end
 
 end

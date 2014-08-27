@@ -5,10 +5,11 @@ class Question < ActiveRecord::Base
 
   rails_admin do
 		edit do
-			field :question
+			field :question, :wysihtml5
 			field :type
 			field :tab
 			field :position
+      field :allow_copy_prev
 		end
 	end
 end
