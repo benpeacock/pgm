@@ -24,7 +24,7 @@
 	      Cancel
 	    <% end %>
 	  </div>
-	  <% unless question.type.name == 'checkbox' %>
+		<% unless question.allow_copy_prev == false %> <!-- Begin Copy Prev -->
 			<div>
 		    <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
 		    	Copy Previous <span class="caret"></span>
@@ -37,19 +37,19 @@
 		    	<% end %>
 		  	</ul>
 			</div>
-		  <div>
-		    <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
-		    	Copy Other <span class="caret"></span>
-		    </button>
-		    <ul class="dropdown-menu program-menu" role="menu" id="program-menu-<%= @answer.id %>">
-		      <% programs = Program.where("country_id = ?", @program.country_id) %>
-		      <% programs.each do |program| %>
-		        <li>
-		          <%= link_to program.name, new_for_params_answer_path(year_id: year, program_id: program, question_id: question), class: "copyOther", remote: true %>
-		        </li>
-		      <% end %>
-		    </ul>
-		  </div>
-		<% end %>
+		<% end %> <!-- End Copy Prev -->
+		<div> <!-- Begin Copy Other -->
+		  <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
+		 		Copy Other <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu program-menu" role="menu" id="program-menu-<%= @answer.id %>">
+		    <% programs = Program.where("country_id = ?", @program.country_id) %>
+		    <% programs.each do |program| %>
+		      <li>
+		        <%= link_to program.name, new_for_params_answer_path(year_id: year, program_id: program, question_id: question), class: "copyOther", remote: true %>
+		      </li>
+		    <% end %>
+		  </ul>
+		</div> <!-- End Copy Other -->
 	</div>
 <% end %>

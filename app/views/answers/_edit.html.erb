@@ -17,14 +17,12 @@
       <div>
         <%= f.submit 'Save', :class => 'btn btn-default lineup' %>
       </div>
-
       <div>
         <%= link_to [program, year], class: 'btn btn-default cancel lineup',  :confirm => 'Cancel without saving?' do %>
           Cancel
         <% end %>
       </div>
-      <% unless question.type.name = 'checkbox' %>
-        <% unless question.allow_copy_prev == false %>
+        <% unless question.allow_copy_prev == false %> <!-- Begin Copy Prev -->
           <div>
             <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
             Copy Previous <span class="caret"></span>
@@ -37,8 +35,8 @@
             	<% end %>
           	</ul>
           </div>
-        <% end %>
-        <div>
+        <% end %> <!-- End Copy Prev -->
+        <div> <!-- Begin Copy Other -->
           <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
             Copy Other <span class="caret"></span>
           </button>
@@ -50,8 +48,7 @@
               </li>
             <% end %>
           </ul>
-        </div>
-      <% end %>
+        </div> <!-- End Copy Other -->
     </div>
-  <% end %>
+  <% end %> <!-- End form -->
 <% end %>
