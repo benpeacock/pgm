@@ -1,5 +1,6 @@
 Pgm::Application.routes.draw do
 
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   # Looks at user's authentication and role
   rails_admin_constraint = lambda do |request|
     request.env['warden'].authenticate? && request.env['warden'].user.role?(:admin)

@@ -10,7 +10,7 @@
           elsif question.type.id == 'field'
             f.text_field :answer, id: "new_answer_#{question.id}", class: 'form-control answer-field'
           else
-            f.text_area :answer, id: "new_answer_#{question.id}", class: 'form-control answer-area'
+            f.bootsy_area :answer, id: "new_answer_#{question.id}", class: 'form-control answer-area', editor_options: {image: false}
           end %>
      </div>
   </div>
