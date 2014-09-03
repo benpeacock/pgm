@@ -14,13 +14,17 @@
 			<% questions.each do |question| %>
 				<div class="row answer-partial">
 					<div>
-						<strong><%= raw question.question %></strong>
+						<!-- Allowing formatting input by admin, but escaping most tags using Sanitize gem -->
+						<strong><%= raw Sanitize.fragment(question.question, Sanitize::Config::RESTRICTED) %></strong>
 					</div>
 					<% answer = answer_for_question(question, @program, @year) %>
 					<% if answer.blank? %>
 						<div id="static_answer_<%= question.id %>">
 							<!-- Allowing formatting input by user, but escaping most tags using Sanitize gem -->
-							<%= raw Sanitize.fragment(@answer.answer, Sanitize::Config::RESTRICTED) %>
+							<%# raw Sanitize.fragment(@answer.answer, Sanitize::Config::RESTRICTED) %>
+							<p>h: <%= h @answer.answer %></p>
+							<p>nada: <%= @answer.answer %></p>
+							<p>sf h: <%= simple_format h @answer.answer %></p>
 							<a href="" class="toggleLink new_<%= question.id %>" id="<%= question.id %>">New</a>
 							<div class="toggleField" id="field_<%= question.id %>" style="display: none;">
 								<%= render partial: "answers/new", locals: { year: @year, program: @program, question: question } %>
@@ -29,7 +33,10 @@
 					<% else %>
 						<div id="static_answer_<%= answer.id %>">
 							<!-- Allowing formatting input by user, but escaping most tags using Sanitize gem -->
-							<%= raw Sanitize.fragment(answer.answer, Sanitize::Config::RESTRICTED) %>
+							<p>h: <%= h answer.answer %></p>
+							<p>nada: <%= answer.answer %></p>
+							<p>sf h: <%= simple_format h answer.answer %></p>
+							<p>raw sanitize: <%= raw Sanitize.fragment(answer.answer, Sanitize::Config::RESTRICTED) %></p>
 							<a href="" class="toggleLink" id="<%= question.id %>">Edit</a>
 							<div class="toggleField" id="field_<%= question.id %>" style="display: none;">
 								<%= render partial: "answers/edit", locals: { year: @year, program: @program, question: question } %>
