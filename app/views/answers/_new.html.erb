@@ -7,7 +7,7 @@
      <div>
       <%= if question.type.name == 'checkbox'
             f.check_box :answer, {id: "new_answer_#{question.id}"}, "Yes", "No"
-          elsif question.type.id == 'field'
+          elsif question.type.name == 'field'
             f.text_field :answer, id: "new_answer_#{question.id}", class: 'form-control answer-field'
           else
             f.bootsy_area :answer, id: "new_answer_#{question.id}", class: 'form-control answer-area', editor_options: {image: false}

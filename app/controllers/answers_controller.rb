@@ -51,7 +51,7 @@ class AnswersController < ApplicationController
       if @answer.update(answer_params)
         @answer.answer = @answer.answer.gsub(/\r\n?/, "<br/>").strip;
         format.html { redirect_to [@program, @year], notice: 'Answer was successfully updated.' }
-        format.js { }
+        format.js {}
         format.json { render json: @answer, status: :ok}
       else
         format.html { render action: 'edit' }
