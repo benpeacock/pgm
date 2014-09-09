@@ -8,7 +8,7 @@
               elsif question.type.name == 'field'
                 f.text_field :answer, id: dom_id(answer), class: 'form-control answer-field'
               else
-                f.bootsy_area :answer, id: dom_id(answer), class: 'form-control answer-area', editor_options: {image: false}
+                f.text_area :answer, id: dom_id(answer), class: 'form-control answer-area', editor_options: {image: false}
               end %>
       </div>
     </div>
