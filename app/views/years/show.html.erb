@@ -30,7 +30,7 @@
 						<div id="static_answer_<%= answer.id %>">
 							<!-- Allowing formatting input by user, but escaping most tags using Sanitize gem -->
 							<% if question.type.name == 'radio_button' %>
-								<% choice = Choice.find(answer.id) %>
+								<% choice = Choice.find(answer.answer) %>
 								<%= choice ? "#{choice.id}: #{choice.body}" : nil %>
 							<% else %>
 								<%= raw Sanitize.fragment(answer.answer, Sanitize::Config::RESTRICTED) %>
