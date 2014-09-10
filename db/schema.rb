@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826193647) do
+ActiveRecord::Schema.define(version: 20140909200617) do
 
   create_table "answers", force: true do |t|
     t.text     "answer"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20140826193647) do
   add_index "answers", ["program_id"], name: "index_answers_on_program_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["year_id"], name: "index_answers_on_year_id"
+
+  create_table "choices", force: true do |t|
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "question"
+  end
 
   create_table "countries", force: true do |t|
     t.string   "name"
@@ -50,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140826193647) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "allow_copy_prev", default: true
+    t.string   "choices",         default: "{}"
   end
 
   add_index "questions", ["tab_id"], name: "index_questions_on_tab_id"

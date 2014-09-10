@@ -3,7 +3,9 @@
   <%= form_for(answer, remote: true, format: :js) do |f| %>
     <div class="field">
       <div>
-          <%= if question.type.name == 'checkbox'
+          <%= if question.type.name == 'radio_button'
+                choices = Choice.find_by(question.id)
+                choices.inspect
                 f.check_box :answer, {id: dom_id(answer)}, "Yes", "No"
               elsif question.type.name == 'field'
                 f.text_field :answer, id: dom_id(answer), class: 'form-control answer-field'
