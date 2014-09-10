@@ -1,12 +1,10 @@
 <% answer = Answer.find_by program: program, question: question, year: year %>
 <% unless answer.blank? %>
-  <%= form_for(answer, remote: true, format: :js) do |f| %>
+  <%= simple_form_for(answer, remote: true, format: :js) do |f| %>
     <div class="field">
       <div>
           <%= if question.type.name == 'radio_button'
-                choices = Choice.find_by(question.id)
-                choices.inspect
-                f.check_box :answer, {id: dom_id(answer)}, "Yes", "No"
+                f.input :answer, id: dom_id(answer), as: :radio_buttons, collection: Choice.all(order: 'body'), label_method: :body
               elsif question.type.name == 'field'
                 f.text_field :answer, id: dom_id(answer), class: 'form-control answer-field'
               else
@@ -24,33 +22,35 @@
           Cancel
         <% end %>
       </div>
-        <% unless question.allow_copy_prev == false %> <!-- Begin Copy Prev -->
-          <div>
+        <% unless question.type.name == 'radio_button' %> <!-- Turn Copy Other and Copy Prev off for radio buttons -->
+          <% unless question.allow_copy_prev == false %> <!-- Begin Copy Prev -->
+            <div>
+              <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
+              Copy Previous <span class="caret"></span>
+            	</button>
+              <ul class="dropdown-menu year-menu" role="menu" id="year-menu-<%=answer.id%>">
+              	<% @years.each do |year| %>
+              		<li>
+              			<%= link_to year.year, answer_for_params_answer_path(answer, year_id: year, program_id: program, question_id: question), class: "copyPrev", remote:true %>
+              		</li>
+              	<% end %>
+            	</ul>
+            </div>
+          <% end %> <!-- End Copy Prev -->
+          <div> <!-- Begin Copy Other -->
             <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
-            Copy Previous <span class="caret"></span>
-          	</button>
-            <ul class="dropdown-menu year-menu" role="menu" id="year-menu-<%=answer.id%>">
-            	<% @years.each do |year| %>
-            		<li>
-            			<%= link_to year.year, answer_for_params_answer_path(answer, year_id: year, program_id: program, question_id: question), class: "copyPrev", remote:true %>
-            		</li>
-            	<% end %>
-          	</ul>
-          </div>
-        <% end %> <!-- End Copy Prev -->
-        <div> <!-- Begin Copy Other -->
-          <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
-            Copy Other <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu program-menu" role="menu" id="program-menu-<%= answer.id %>">
-            <% programs = Program.where("country_id = ?", @program.country_id) %>
-            <% programs.each do |program| %>
-              <li>
-                <%= link_to program.name, answer_for_params_answer_path(answer, year_id: year, program_id: program, question_id: question), class: "copyOther", remote: true %>
-              </li>
-            <% end %>
-          </ul>
-        </div> <!-- End Copy Other -->
+              Copy Other <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu program-menu" role="menu" id="program-menu-<%= answer.id %>">
+              <% programs = Program.where("country_id = ?", @program.country_id) %>
+              <% programs.each do |program| %>
+                <li>
+                  <%= link_to program.name, answer_for_params_answer_path(answer, year_id: year, program_id: program, question_id: question), class: "copyOther", remote: true %>
+                </li>
+              <% end %>
+            </ul>
+          </div> <!-- End Copy Other -->
+        <% end %>
     </div>
   <% end %> <!-- End form -->
 <% end %>

@@ -80,3 +80,5 @@ gem 'bootsy'
 
 # Sanitize to clean up HTML going from db out to the view
 gem 'sanitize'
+
+gem 'simple_form'
