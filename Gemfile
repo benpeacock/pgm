@@ -75,10 +75,8 @@ gem 'pundit'
 # Wysihtml5 gem for WYSIWYG on rails_admin
 gem 'bootstrap-wysihtml5-rails', '0.3.1.24'
 
-# Bootsy for WYSISYG in regular user interface
-gem 'bootsy'
-
 # Sanitize to clean up HTML going from db out to the view
 gem 'sanitize'
 
+# Simple_form for radio_buttons in forms
 gem 'simple_form'
