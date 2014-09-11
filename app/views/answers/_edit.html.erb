@@ -3,7 +3,9 @@
   <%= simple_form_for(answer, remote: true, format: :js) do |f| %>
     <div class="field">
       <div>
-          <%= if question.type.name == 'radio_button'
+          <%= if question.type.name == 'date'
+                f.date_field :answer, id: dom_id(answer), class: 'form-control answer-field', placeholder: 'mm/dd/yyyy'
+              elsif question.type.name == 'radio_button'
                 f.input :answer, id: dom_id(answer), as: :radio_buttons, collection: Choice.where(:question_id => question.id).order('body'), label_method: :body
               elsif question.type.name == 'field'
                 f.text_field :answer, id: dom_id(answer), class: 'form-control answer-field'
