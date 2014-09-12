@@ -16,6 +16,7 @@ class YearsController < ApplicationController
   def show
     @tabs = Tab.order(:position).all
     @answer = Answer.new
+    @courses = Course.where(program_id: @program.id, year_id: @year.id)
   end
 
   # GET /years/new

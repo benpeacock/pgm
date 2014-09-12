@@ -27,7 +27,9 @@ Pgm::Application.routes.draw do
   end
 
   resources :programs do
-    resources :years
+    resources :years do
+      resources :courses
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

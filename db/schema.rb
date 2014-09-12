@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910135202) do
+ActiveRecord::Schema.define(version: 20140912134158) do
 
   create_table "answers", force: true do |t|
     t.text     "answer"
@@ -42,6 +42,23 @@ ActiveRecord::Schema.define(version: 20140910135202) do
     t.integer  "position"
   end
 
+  create_table "courses", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "course_number"
+    t.string   "course_title"
+    t.string   "course_hours"
+    t.string   "course_credits"
+    t.string   "language"
+    t.string   "term"
+    t.boolean  "new_course"
+    t.integer  "program_id"
+    t.integer  "year_id"
+  end
+
+  add_index "courses", ["program_id"], name: "index_courses_on_program_id"
+  add_index "courses", ["year_id"], name: "index_courses_on_year_id"
+
   create_table "programs", force: true do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -51,19 +68,8 @@ ActiveRecord::Schema.define(version: 20140910135202) do
 
   add_index "programs", ["country_id"], name: "index_programs_on_country_id"
 
-  create_table "questions", force: true do |t|
-    t.text     "question"
-    t.integer  "tab_id"
-    t.integer  "type_id"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "allow_copy_prev", default: true
-    t.string   "choices",         default: "{}"
-  end
-
-  add_index "questions", ["tab_id"], name: "index_questions_on_tab_id"
-  add_index "questions", ["type_id"], name: "index_questions_on_type_id"
+# Could not dump table "questions" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "rich_rich_files", force: true do |t|
     t.datetime "created_at"
