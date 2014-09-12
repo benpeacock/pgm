@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/bernat/best_in_place
+  revision: e5736320e7a5905cdaaa075d3ac8eba3962f3d30
+  specs:
+    best_in_place (3.0.0.alpha)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -180,6 +188,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  best_in_place!
   bootstrap-sass (~> 3.1.1)
   bootstrap-wysihtml5-rails (= 0.3.1.24)
   coffee-rails (~> 4.0.0)

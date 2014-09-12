@@ -1,6 +1,6 @@
 <h1>Courses</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Course Number</th>
@@ -15,14 +15,16 @@
 
   <tbody>
     <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.course_number %></td>
-        <td><%= link_to course.course_title, edit_program_year_course_path(course, @program.id, @year.id) %></td>
-        <td><%= course.course_hours %></td>
-        <td><%= course.course_credits %></td>
-        <td><%= course.term %></td>
-        <td><%= course.new_course %></td>
-        <td><%= course.language %></td>
+      <tr id="course_<%= course.id %>">
+        <td><%= best_in_place course, :course_number, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Course Number</em>' %></td>
+        <td><%= best_in_place course, :course_title, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Title</em>' %></td>
+        <td><%= best_in_place course, :course_hours, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Hours</em>'  %></td>
+        <td><%= best_in_place course, :course_credits, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Credits</em>'  %></td>
+        <td><%= best_in_place course, :term, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Term</em>' %></td>
+        <td><%= best_in_place course, :new_course, :type => :checkbox, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>(Y/N)</em>' %></td>
+        <td><%= best_in_place course, :language, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Language</em>'  %></td>
+        <td><%# link_to 'Destroy', program_year_course_path(@program.id, @year.id, course), method: :delete, format: :json, data: { confirm: 'Delete course?' } %></td>
+        <td><%= link_to 'Delete', program_year_course_path(@program.id, @year.id, course), method: :delete, data: { confirm: 'Delete course?' } %></td>
         <td><%# link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

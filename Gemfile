@@ -80,3 +80,6 @@ gem 'sanitize'
 
 # Simple_form for radio_buttons in forms
 gem 'simple_form'
+
+# Best_in_place for in-place editing of courses
+gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place'

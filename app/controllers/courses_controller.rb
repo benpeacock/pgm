@@ -59,8 +59,12 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url }
-      format.json { head :no_content }
+      if @course.destroy
+        @year = Year.find(params[:year_id])
+        format.html { redirect_to @year }
+      else
+        format.html { redirect_to program_year_path(program_id: @program.id, year_id: @year.id), notice: 'Could not delete course' }
+      end
     end
   end
 
@@ -80,7 +84,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params[:course]
+      params.require(:course).permit(:id, :course_number, :course_title, :course_hours, :course_credits, :language, :term, :new_course)
     end
 
 end
