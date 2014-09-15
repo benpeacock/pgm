@@ -1,10 +1,38 @@
-<%= simple_form_for(@course) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@course, url: {action: "create"}) do |f| %>
+  <%# f.error_notification %>
+  <%= f.hidden_field :program_id, :value => @program.id %>
+  <%= f.hidden_field :year_id, :value => @year.id %>
 
-  <div class="form-inputs">
+  <div class="form-group">
+    <%= f.label :course_number %>
+    <%= f.text_field :course_number, placeholder: 'course number', class: 'form-control answer-field' %>
   </div>
-
+  <div class="form-group">
+    <%= f.label :course_title %>
+    <%= f.text_field :course_title, placeholder: 'course title', class: 'form-control answer-field' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :course_hours %>
+    <%= f.text_field :course_hours, placeholder: 'course hours', class: 'form-control answer-field' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :course_credits %>
+    <%= f.text_field :course_credits, placeholder: 'course credits', class: 'form-control answer-field' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :term %>
+    <%= f.text_field :term, placeholder: 'term', class: 'form-control answer-field' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :language %>
+    <%= f.text_field :language, placeholder: 'language of instruction', class: 'form-control answer-field' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :new_course %>
+    <%= f.select :new_course, options_for_select([['',''],['Yes','Yes'],['No','No']]), class: 'form-control' %>
+  </div>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit "Create", class: 'btn btn-primary' %>
+    <%= link_to "Cancel", :back, class: 'btn btn-default' %>
   </div>
 <% end %>

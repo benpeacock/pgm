@@ -1,13 +1,12 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :set_program, only: [:show, :edit, :update, :destroy]
-  before_action :set_year, only: [:show, :edit, :update, :destroy]
+  before_action :set_program, only: [:show, :edit, :update, :destroy, :create, :new]
+  before_action :set_year, only: [:show, :edit, :update, :destroy, :create, :new]
   before_action :set_courses, only: [:destroy]
 
   # GET /courses
   # GET /courses.json
   def index
-    #@courses = Course.all
   end
 
   # GET /courses/1
@@ -29,14 +28,11 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @course }
+        format.html { redirect_to [@program, @year], notice: 'Course was successfully created.' }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.html { render action: 'new', notice: 'Course could not be saved.' }
       end
     end
   end
@@ -88,7 +84,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:id, :course_number, :course_title, :course_hours, :course_credits, :language, :term, :new_course)
+      params.require(:course).permit(:id, :course_number, :course_title, :course_hours, :course_credits, :language, :term, :new_course, :year_id, :program_id)
     end
 
 end
