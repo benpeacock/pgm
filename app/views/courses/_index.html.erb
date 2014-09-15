@@ -23,9 +23,7 @@
         <td><%= best_in_place course, :term, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Term</em>' %></td>
         <td><%= best_in_place course, :new_course, :type => :checkbox, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>(Y/N)</em>' %></td>
         <td><%= best_in_place course, :language, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Language</em>'  %></td>
-        <td><%# link_to 'Destroy', program_year_course_path(@program.id, @year.id, course), method: :delete, format: :json, data: { confirm: 'Delete course?' } %></td>
         <td><%= link_to 'Delete', program_year_course_path(@program.id, @year.id, course), method: :delete, data: { confirm: 'Delete course?' } %></td>
-        <td><%# link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

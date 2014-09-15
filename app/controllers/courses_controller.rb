@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :set_program, only: [:show, :edit, :update, :destroy]
   before_action :set_year, only: [:show, :edit, :update, :destroy]
+  before_action :set_courses, only: [:destroy]
 
   # GET /courses
   # GET /courses.json
@@ -60,10 +61,9 @@ class CoursesController < ApplicationController
     @course.destroy
     respond_to do |format|
       if @course.destroy
-        @year = Year.find(params[:year_id])
-        format.html { redirect_to @year }
+        format.html { redirect_to [@program, @year] }
       else
-        format.html { redirect_to program_year_path(program_id: @program.id, year_id: @year.id), notice: 'Could not delete course' }
+        format.html { redirect_to [@program, @year], notice: 'Could not delete course' }
       end
     end
   end
@@ -72,6 +72,10 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
+    end
+
+    def set_courses
+      @courses = Course.where(program_id: @program.id, year_id: @year.id)
     end
 
     def set_program
