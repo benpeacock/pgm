@@ -10,45 +10,16 @@
 
 	<% @tabs.each do |tab| %>
 			<div class="tab" id="<%= tab.name %>">
-				
+
 				<% if tab.name == 'academics'%> <!-- Begin Courses if Academics tab is displayed -->
 					<%= render partial: "courses/index", locals: { year: @year, program: @program} %>
 				<% end %> <!-- End display of Courses -->
 
-				<% questions = Question.where(tab_id: tab.id).order(:position) %>
-				<% questions.each do |question| %>
-					<div class="row answer-partial">
-						<div>
-							<!-- Allowing formatting input by admin, but escaping most tags using Sanitize gem -->
-							<strong><%= raw Sanitize.fragment(question.question, Sanitize::Config::RESTRICTED) %></strong>
-						</div>
-						<% answer = answer_for_question(question, @program, @year) %>
-						<% if answer.blank? %>
-							<div id="static_answer_<%= question.id %>">
-								<%= raw Sanitize.fragment(@answer.answer, Sanitize::Config::RESTRICTED) %>
-								<a href="" class="toggleLink new_<%= question.id %>" id="<%= question.id %>">New</a>
-								<div class="toggleField" id="field_<%= question.id %>" style="display: none;">
-									<%= render partial: "answers/new", locals: { year: @year, program: @program, question: question } %>
-								</div>
-							</div>
-						<% else %>
-							<div id="static_answer_<%= answer.id %>">
-								<!-- Allowing formatting input by user, but escaping most tags using Sanitize gem -->
-								<% if question.type.name == 'radio_button' %>
-									<% choice = Choice.find(answer.answer) %>
-									<%= choice ? choice.body : nil %>
-								<% else %>
-									<%= raw Sanitize.fragment(answer.answer, Sanitize::Config::RESTRICTED) %>
-								<% end %>
-								<br />
-								<a href="" class="toggleLink" id="<%= question.id %>">Edit</a>
-								<div class="toggleField" id="field_<%= question.id %>" style="display: none;">
-									<%= render partial: "answers/edit", locals: { year: @year, program: @program, question: question } %>
-								</div>
-							</div>
-						<% end %>
-					</div>
+				<% sections = Section.where(tab_id: tab.id).order(:position) %>
+				<% sections.each do |section| %>
+					<%= render partial: 'sections/show', locals: {section: section } %>
 				<% end %>
+
 			</div>
 	<% end %>
 

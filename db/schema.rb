@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912134158) do
+ActiveRecord::Schema.define(version: 20140916145103) do
 
   create_table "answers", force: true do |t|
     t.text     "answer"
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 20140912134158) do
     t.text     "uri_cache"
     t.string   "simplified_type",        default: "file"
   end
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.integer  "tab_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sections", ["tab_id"], name: "index_sections_on_tab_id"
 
   create_table "tabs", force: true do |t|
     t.string   "name"
