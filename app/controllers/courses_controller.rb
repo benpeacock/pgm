@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :set_program, only: [:show, :edit, :update, :destroy, :create, :new]
   before_action :set_year, only: [:show, :edit, :update, :destroy, :create, :new]
-  before_action :set_courses, only: [:destroy]
+  before_action :set_courses, only: [:show]
 
   # GET /courses
   # GET /courses.json
@@ -12,7 +12,6 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @courses = Course.where(program_id: @program.id, year_id: @year.id)
   end
 
   # GET /courses/new
@@ -32,7 +31,7 @@ class CoursesController < ApplicationController
       if @course.save
         format.html { redirect_to [@program, @year], notice: 'Course was successfully created.' }
       else
-        format.html { render action: 'new', notice: 'Course could not be saved.' }
+        format.html { render action: 'new', notice: 'Course could not be created.' }
       end
     end
   end
@@ -45,7 +44,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', notice: 'Could not update course.' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
@@ -57,9 +56,9 @@ class CoursesController < ApplicationController
     @course.destroy
     respond_to do |format|
       if @course.destroy
-        format.html { redirect_to [@program, @year] }
+        format.html { redirect_to [@program, @year], notice: 'Course was successfully deleted.' }
       else
-        format.html { redirect_to [@program, @year], notice: 'Could not delete course' }
+        format.html { redirect_to [@program, @year], notice: 'Could not delete course.' }
       end
     end
   end

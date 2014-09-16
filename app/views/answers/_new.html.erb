@@ -22,7 +22,7 @@
       <%= f.submit 'Save', :class => 'btn btn-default lineup' %>
     </div>
 	  <div>
-	    <%= link_to [program, year], class: 'btn btn-default cancel lineup',  :confirm => 'Cancel without saving?' do %>
+	    <%= link_to [program, year], class: 'btn btn-default cancel lineup',  data: { confirm: 'Cancel without saving?' } do %>
 	      Cancel
 	    <% end %>
 	  </div>
