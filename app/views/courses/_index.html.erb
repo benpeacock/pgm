@@ -23,19 +23,15 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr id="course_<%= course.id %>">
-        <td><%= best_in_place course, :course_number, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Course Number</em>' %></td>
-        <td><%= best_in_place course, :course_title, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Title</em>' %></td>
-        <td><%= best_in_place course, :course_hours, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Hours</em>'  %></td>
-        <td><%= best_in_place course, :course_credits, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Credits</em>'  %></td>
-        <td><%= best_in_place course, :term, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Term</em>' %></td>
-        <td><%= best_in_place course, :new_course, :type => :checkbox, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>(Y/N)</em>' %></td>
-        <td><%= best_in_place course, :language, :path => program_year_course_path(@program.id, @year.id, course), nil: '<em>Language</em>'  %></td>
+        <td><%= best_in_place course, :course_number, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>Course Number</em>' %></td>
+        <td><%= best_in_place course, :course_title, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>Title</em>' %></td>
+        <td><%= best_in_place course, :course_hours, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>Hours</em>'  %></td>
+        <td><%= best_in_place course, :course_credits, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>Credits</em>'  %></td>
+        <td><%= best_in_place course, :term, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>Term</em>' %></td>
+        <td><%= best_in_place course, :new_course, :type => :checkbox, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>(Y/N)</em>' %></td>
+        <td><%= best_in_place course, :language, :url => program_year_course_path(@program.id, @year.id, course), place_holder: '<em>Language</em>'  %></td>
         <td><%= link_to 'Delete', program_year_course_path(@program.id, @year.id, course), method: :delete, data: { confirm: 'Delete course?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%# link_to 'New Course', new_course_path %>
