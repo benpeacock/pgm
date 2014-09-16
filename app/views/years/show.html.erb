@@ -4,14 +4,14 @@
 
 	<ul class="tabs">
 		<% @tabs.each do |tab| %>
-			<li><a href="#<%= tab.name %>"><%= tab.name.humanize %></a></li>
+			<li><a href="#<%= tab.name.parameterize %>"><%= tab.name %></a></li>
 		<% end %>
 	</ul>
 
 	<% @tabs.each do |tab| %>
-			<div class="tab" id="<%= tab.name %>">
+			<div class="tab" id="<%= tab.name.parameterize %>">
 
-				<% if tab.name == 'academics'%> <!-- Begin Courses if Academics tab is displayed -->
+				<% if tab.name.parameterize == 'academics'%> <!-- Begin Courses if Academics tab is displayed -->
 					<%= render partial: "courses/index", locals: { year: @year, program: @program} %>
 				<% end %> <!-- End display of Courses -->
 
