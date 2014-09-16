@@ -10,12 +10,13 @@
 
 	<% @tabs.each do |tab| %>
 			<div class="tab" id="<%= tab.name %>">
-				<% if tab.name == 'courses'%> <!-- Begin tab logic -->
+				
+				<% if tab.name == 'academics'%> <!-- Begin Courses if Academics tab is displayed -->
 					<%= render partial: "courses/index", locals: { year: @year, program: @program} %>
-				<% else %>
+				<% end %> <!-- End display of Courses -->
+
 				<% questions = Question.where(tab_id: tab.id).order(:position) %>
 				<% questions.each do |question| %>
-
 					<div class="row answer-partial">
 						<div>
 							<!-- Allowing formatting input by admin, but escaping most tags using Sanitize gem -->
@@ -49,7 +50,6 @@
 					</div>
 				<% end %>
 			</div>
-		<% end %> <!-- End tab logic -->
 	<% end %>
 
 </div>
