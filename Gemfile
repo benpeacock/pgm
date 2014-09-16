@@ -83,3 +83,6 @@ gem 'simple_form'
 
 # Best_in_place for in-place editing of courses
 gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place'
+
+# New Relic for monitoring
+gem 'newrelic_rpm'
