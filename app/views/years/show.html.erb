@@ -16,8 +16,10 @@
 				<% end %> <!-- End display of Courses -->
 
 				<% sections = Section.where(tab_id: tab.id).order(:position) %>
-				<% sections.each do |section| %>
-					<%= render partial: 'sections/show', locals: {section: section } %>
+				<% if sections %>
+					<% sections.each do |section| %>
+						<%= render partial: 'sections/show', locals: { section: section } %>
+					<% end %>
 				<% end %>
 
 			</div>
