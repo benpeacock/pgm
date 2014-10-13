@@ -4,40 +4,44 @@
   </div>
   <div class="panel-body">
     <% questions = Question.where(section_id: section.id).order(:position) %>
-    <% questions.each do |question| %>
-      <div class="row answer-partial">
-        <div>
-          <!-- Allowing formatting input by admin, but escaping most tags using Sanitize gem -->
-          <strong><%= raw Sanitize.fragment(question.question, Sanitize::Config::RESTRICTED) %></strong>
-        </div>
-        <% answer = answer_for_question(question, @program, @year) %>
-        <% if answer.blank? %>
-          <div id="static_answer_<%= question.id %>">
-            <%= raw Sanitize.fragment(@answer.answer, Sanitize::Config::RESTRICTED) %>
-            <a href="" class="toggleLink new_<%= question.id %>" id="<%= question.id %>">New</a>
-            <div class="toggleField" id="field_<%= question.id %>" style="display: none;">
-              <%= render partial: "answers/new", locals: { year: @year, program: @program, question: question } %>
-            </div>
+    <% if questions %>
+      <% questions.each do |question| %>
+        <div class="row answer-partial">
+          <div>
+            <!-- Allowing formatting input by admin, but escaping most tags using Sanitize gem -->
+            <strong><%= raw Sanitize.fragment(question.question, Sanitize::Config::RESTRICTED) %></strong>
           </div>
-        <% else %>
-          <div id="static_answer_<%= answer.id %>">
-            <!-- Allowing formatting input by user, but escaping most tags using Sanitize gem -->
-            <% if question.type.name == 'radio_button' %>
-              <% choice = Choice.find(answer.answer) %>
-              <% if choice %>
-                <%= choice ? choice.body : nil %>
-              <% end %>
+          <% answer = answer_for_question(question, @program, @year) %>
+          <% if answer %>
+            <% if answer.blank? %>
+              <div id="static_answer_<%= question.id %>">
+                <%= raw Sanitize.fragment(@answer.answer, Sanitize::Config::RESTRICTED) %>
+                <a href="" class="toggleLink new_<%= question.id %>" id="<%= question.id %>">New</a>
+                <div class="toggleField" id="field_<%= question.id %>" style="display: none;">
+                  <%= render partial: "answers/new", locals: { year: @year, program: @program, question: question } %>
+                </div>
+              </div>
             <% else %>
-              <%= raw Sanitize.fragment(answer.answer, Sanitize::Config::RESTRICTED) %>
+              <div id="static_answer_<%= answer.id %>">
+                <!-- Allowing formatting input by user, but escaping most tags using Sanitize gem -->
+                <% if question.type.name == 'radio_button' %>
+                  <% choice = Choice.find(answer.answer) %>
+                  <% if choice %>
+                    <%= choice ? choice.body : nil %>
+                  <% end %>
+                <% else %>
+                  <%= raw Sanitize.fragment(answer.answer, Sanitize::Config::RESTRICTED) %>
+                <% end %>
+                <br />
+                <a href="" class="toggleLink" id="<%= question.id %>">Edit</a>
+                <div class="toggleField" id="field_<%= question.id %>" style="display: none;">
+                  <%= render partial: "answers/edit", locals: { year: @year, program: @program, question: question } %>
+                </div>
+              </div>
             <% end %>
-            <br />
-            <a href="" class="toggleLink" id="<%= question.id %>">Edit</a>
-            <div class="toggleField" id="field_<%= question.id %>" style="display: none;">
-              <%= render partial: "answers/edit", locals: { year: @year, program: @program, question: question } %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
