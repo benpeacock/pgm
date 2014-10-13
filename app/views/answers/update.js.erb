@@ -1,2 +1,2 @@
-$("#static_answer_<%= @answer.id %>").html("<%= raw Sanitize.fragment(@answer.answer, Sanitize::Config::RESTRICTED) %>");
+$("#static_answer_<%= @answer.id %>").html("<%= raw Sanitize.fragment(@answer.answer, Sanitize::Config::BASIC) %>");
 $("#field_<%= @answer.question.id %>").hide();

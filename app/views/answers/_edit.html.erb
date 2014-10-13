@@ -1,6 +1,7 @@
 <% answer = Answer.find_by program: program, question: question, year: year %>
 <% unless answer.blank? %>
   <%= simple_form_for(answer, remote: true, format: :js) do |f| %>
+
     <div class="field">
       <div>
           <%= if question.type.name == 'date'

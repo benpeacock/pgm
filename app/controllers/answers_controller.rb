@@ -33,6 +33,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
+        @answer.answer = @answer.answer.gsub(/\r\n?/, "<br/>").gsub(/ /, "&nbsp;")
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
         format.js
         format.json { render json: @answer, status: :ok}
@@ -47,9 +48,11 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1.json
   def update
     authorize @answer
+
     respond_to do |format|
       if @answer.update(answer_params)
-        @answer.answer = @answer.answer.gsub(/\r\n?/, "<br/>").strip;
+        @answer.answer = @answer.answer.gsub(/\r\n?/, "<br/>").gsub(/ /, "&nbsp;")
+        #@answer.answer = @answer.answer
         format.html { redirect_to [@program, @year], notice: 'Answer was successfully updated.' }
         format.js {}
         format.json { render json: @answer, status: :ok}

@@ -5,11 +5,10 @@ class Answer < ActiveRecord::Base
 
   rails_admin do
     edit do
-      field :answer, :wysihtml5
+      field :answer
       field :question
       field :program
       field :year
     end
   end
-
 end
