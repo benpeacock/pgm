@@ -26,7 +26,7 @@
 	      Cancel
 	    <% end %>
 	  </div>
-		<% unless question.type =='radio_button' %>
+		<% unless question.type.name =='radio_button' %> <!-- Turn Copy Other and Copy Prev off for radio buttons -->
 			<% unless question.allow_copy_prev == false %> <!-- Begin Copy Prev -->
 				<div>
 			    <button type="button" class="btn btn-default dropdown-toggle lineup" data-toggle="dropdown">
