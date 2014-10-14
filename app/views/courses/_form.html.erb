@@ -11,25 +11,27 @@
     <%= f.text_field :course_title, placeholder: 'course title', class: 'form-control answer-field' %>
   </div>
   <div class="form-group">
-    <%= f.label :course_hours %>
-    <%= f.text_field :course_hours, placeholder: 'course hours', class: 'form-control answer-field' %>
+    <%= f.label :total_hours %>
+    <%= f.text_field :course_hours, placeholder: 'total hours', class: 'form-control answer-field' %>
   </div>
   <div class="form-group">
-    <%= f.label :course_credits %>
-    <%= f.text_field :course_credits, placeholder: 'course credits', class: 'form-control answer-field' %>
+    <%= f.label :recommended_credits %>
+    <%= f.text_field :course_credits, placeholder: 'recommended credits', class: 'form-control answer-field' %>
   </div>
   <div class="form-group">
-    <%= f.label :term %>
-    <%= f.text_field :term, placeholder: 'term', class: 'form-control answer-field' %>
+    <%= f.label "Term(s) offered" %>
+    <%= f.text_field :term, placeholder: 'term(s) offered', class: 'form-control answer-field' %>
   </div>
   <div class="form-group">
-    <%= f.label :language %>
-    <%= f.text_field :language, placeholder: 'language of instruction', class: 'form-control answer-field' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :new_course %>
+    <%= f.label :new? %>
     <%= f.select :new_course, options_for_select([['',''],['Yes','Yes'],['No','No']]), class: 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <%= f.label "Language(s) of Instruction" %>
+    <%= f.text_field :language, placeholder: 'language(s) of instruction', class: 'form-control answer-field' %>
+  </div>
+
   <div class="form-actions">
     <%= f.submit "Create", class: 'btn btn-primary' %>
     <%= link_to "Cancel", :back, class: 'btn btn-default' %>
