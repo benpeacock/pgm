@@ -30,7 +30,7 @@
                     <%= choice ? choice.body : nil %>
                   <% end %>
                 <% else %>
-                  <%= raw Sanitize.fragment(answer.answer.gsub(/\r\n?/, "<br>").gsub(/ /, "&nbsp;"), Sanitize::Config::BASIC) %>
+                  <%= raw Sanitize.fragment(answer.answer.gsub(/\r\n?/, "<br>"), Sanitize::Config::BASIC) %>
                 <% end %>
                 <br>
                 <a href="" class="toggleLink" id="<%= question.id %>">Edit</a>
