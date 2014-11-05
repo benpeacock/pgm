@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pgm</title>
+  <title>Programs Database</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,7 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
+      <li><%= image_tag 'logo-4.png' %></li>
       <li><%= link_to "Home", root_path %></li>
         <div class="pull-right user-info">
           <% if current_user %>
